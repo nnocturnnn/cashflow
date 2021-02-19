@@ -21,7 +21,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String index(Model model, HttpServletResponse response) {
-		response.encodeRedirectURL("/home");
+		response.encodeRedirectURL("/base");
 	}
 
 }
