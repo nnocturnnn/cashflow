@@ -14,4 +14,9 @@ public class MainController {
 		return "records";
 	}
 
+    @GetMapping("/transaction")
+	public String transaction(Model model) {
+		return "transaction";
+	}    
+
 }
