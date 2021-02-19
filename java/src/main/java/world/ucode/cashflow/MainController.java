@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 
 @Controller
-public class LoginController {
+public class MainController {
 
 	@GetMapping("/home")
 	public String index(Model model) {
-		return "base";
+		return "records";
 	}
 
 }

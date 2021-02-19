@@ -2,7 +2,7 @@ world/ucode/cashflow/CashflowApplication.java
  world.ucode.cashflow.CashflowApplication
 world/ucode/cashflow/LoginController.java
  world.ucode.cashflow.LoginController
-world/ucode/cashflow/RegisterController.java
- world.ucode.cashflow.RegisterController
-world/ucode/cashflow/HomeController.java
- world.ucode.cashflow.HomeController
+world/ucode/cashflow/StartController.java
+ world.ucode.cashflow.StartController
+world/ucode/cashflow/MainController.java
+ world.ucode.cashflow.MainController

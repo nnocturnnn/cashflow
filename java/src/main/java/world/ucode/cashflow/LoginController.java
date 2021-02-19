@@ -10,18 +10,18 @@ import org.springframework.ui.Model;
 public class LoginController {
 
 	@GetMapping("/login")
-	public String index(Model model) {
+	public String login(Model model) {
 		return "login";
 	}
 
     @GetMapping("/register")
-	public String index(Model model) {
+	public String register(Model model) {
 		return "register";
 	}
 
     @PostMapping("/login")
-    public String index(Model model, HttpServletResponse response) {
-		response.encodeRedirectURL("/base");
+    public String postLogin(Model model, HttpServletResponse response) {
+		return "redirect:home";
 	}
 
 }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Ido" content>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+
+    <script>
+        var subjectObject = {
+          "Income": {
+            "Building or Lands": ["Rental", "Sell"],
+            "Stock Market or Crypto": ["Crypto", "Dividen", "Sell Stock"],
+            "Wage": ["Annual Bonus", "Monthly Bonus", "Monthly Wage"],
+            "Others Income": ["Other"]
+          },
+          "Expense": {
+            "Communication": ["Subscribe", "Software", "WiFi"],
+            "Entertainment": ["Charity", "Hobbies", "Sport", "Travelling", "Wellness"],
+            "Financial Expenses": ["Aids", "Child Support", "Fines", "Other Insurance", "Tax"],
+            "Food": ["Cafe", "Restaurant"],
+            "Housing": ["Building Insurance", "Housing Care", "Rent", "Utility or Energy"],
+            "Investation": ["Crypto", "House", "Land", "Stock"],
+            "Shopping": ["Accessories", "Electronics", "Kids", "Skincare", "Tools", "Vehicles"],
+            "Vehicle": ["Fuel", "Maintenance", "Parking", "Rentals", "Vehicle Insurance"],
+            "Other Expenses": ["Other"]
+          }
+        }
+        window.onload = function() {
+          var typeSel = document.getElementById("type");
+          var categorySel = document.getElementById("category");
+          var sub_categorySel = document.getElementById("sub_category");
+          for (var x in subjectObject) {
+            typeSel.options[typeSel.options.length] = new Option(x, x);
+          }
+          typeSel.onchange = function() {
+            //empty Chapters- and Topics- dropdowns
+            sub_categorySel.length = 1;
+            categorySel.length = 1;
+            //display correct values
+            for (var y in subjectObject[this.value]) {
+              categorySel.options[categorySel.options.length] = new Option(y, y);
+            }
+          }
+          categorySel.onchange = function() {
+            //empty Chapters dropdown
+            sub_categorySel.length = 1;
+            //display correct values
+            var z = subjectObject[typeSel.value][this.value];
+            for (var i = 0; i < z.length; i++) {
+              sub_categorySel.options[sub_categorySel.options.length] = new Option(z[i], z[i]);
+            }
+          }
+        }
+    </script>
+
+    <!-- Title and Icon-->
+    <link rel="icon" href="https://img.icons8.com/ios/452/wallet--v1.png" type="image/png">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-custom" id="navbar">
+        <div class="container-fluid"></div>
+            <a class="navbar-brand" href="/dashboard">
+                <img src="data:image/png;base64,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" id="logo" alt="" width="30" height="24" class="d-inline-block align-top">
+                insert_user!
+            </a>
+            <ul class="navbar-nav px-3 flex-row-reverse">
+                <a class="nav-link" href="/"><button>Sign out</button></a>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+                <nav id="sidenav">
+                    <ul class="nav flex-column">
+                        <li class="nav-link active" id="sidetext"><a href="/wallet"><i class="fas fa-chart-bar nav-icon"></i>Wallet</a></li>
+                        <li class="nav-link active" id="sidetext"><a href="/records"><i class="fas fa-dice-d6 nav-icon"></i>Records</a></li>
+                        <li class="nav-link active" id="sidetext"><a href="/transaction"><i class="fas fa-table nav-icon"></i>Transaction</a></li>
+                        <li class="nav-link active" id="sidetext"><a href="/transaction"><i class="fas fa-table nav-icon"></i>Tag</a></li>
+                        <li class="nav-link active" id="sidetext"><a href="/transaction"><i class="fas fa-table nav-icon"></i>Monobank</a></li>
+                        <li class="nav-link active" id="sidetext"><a href="/transaction"><i class="fas fa-table nav-icon"></i>PrivatBank</a></li>
+                    </ul>
+                </nav>
+                <div class="col" id="grid-right">
+                    <div class="container-fluid">
