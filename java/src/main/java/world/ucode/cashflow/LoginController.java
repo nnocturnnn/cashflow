@@ -36,6 +36,7 @@ public class LoginController {
     @PostMapping("/register")
     public String postRegister(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
+        System.out.println(user.getUsername());
         
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
