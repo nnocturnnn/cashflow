@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -38,7 +39,7 @@ public class MainController {
 
     @PostMapping("/transaction")
     public String transactionPost(Map<String, Object> model) {
-        Iterable<Message> transactions = TransactionRepo.findAll();
+        Iterable<Transaction> transactions = TransactionRepo.findAll();
 
         model.put("messages", transactions);
 		return "transaction";

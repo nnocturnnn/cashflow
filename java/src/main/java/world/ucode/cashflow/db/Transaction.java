@@ -1,7 +1,8 @@
 package com.example.sweater.domain;
 
+import world.ucode.cashflow.db.User;
 import javax.persistence.*;
-import  lombok.*;
+import lombok.*;
 
 @Getter
 @Setter

@@ -3,6 +3,10 @@ package world.ucode.cashflow.db;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
+import world.ucode.cashflow.service.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import java.util.Collection;
 
 @Getter
 @Setter
