@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import world.ucode.cashflow.secvice.UserService;
 
 import javax.sql.DataSource;
 
@@ -20,9 +21,12 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private DataSource dataSource;
+    private UserService userService;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+        @Autowired
+        private UserSevice userSevice;
 		http
 			.authorizeRequests()
 				.antMatchers("/css/**","/","/register").permitAll()
@@ -38,11 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-            .dataSource(dataSource)
-            .passwordEncoder(NoOpPasswordEncoder.getInstance())
-            .usersByUsernameQuery("select username, password, active from usr where username=?")
-            .authoritiesByUsernameQuery("select u.username, ur.roles from usr u inner join user_role ur on u.id = ur.user_id where u.username=?");
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userSevice)
+                .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }

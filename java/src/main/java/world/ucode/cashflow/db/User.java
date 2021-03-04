@@ -40,4 +40,9 @@ public class User extends UserDetails {
     public boolean isEnabled() {
         return isActive();
     }
+
+     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
 }
