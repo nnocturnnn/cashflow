@@ -16,7 +16,7 @@ import java.util.Map;
 @Controller
 public class MainController {
     @Autowired
-    private MessageRepo messageRepo;
+    private TransactionRepo transactionRepo;
 
 	@GetMapping("/home")
 	public String index(Model model) {
@@ -28,7 +28,7 @@ public class MainController {
             @RequestParam String text,
             @RequestParam String tag, Map<String, Object> model) {
         Transaction transaction = new Transaction(text, tag, user);
-        TransactionRepo.save(transaction);
+        transactionRepo.save(transaction);
 		return "records";
 	}
 
@@ -39,7 +39,7 @@ public class MainController {
 
     @PostMapping("/transaction")
     public String transactionPost(Map<String, Object> model) {
-        Iterable<Transaction> transactions = TransactionRepo.findAll();
+        Iterable<Transaction> transactions = transactionRepo.findAll();
 
         model.put("messages", transactions);
 		return "transaction";

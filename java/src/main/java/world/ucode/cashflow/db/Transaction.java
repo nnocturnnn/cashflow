@@ -1,4 +1,4 @@
-package com.example.sweater.domain;
+package world.ucode.cashflow.db;
 
 import world.ucode.cashflow.db.User;
 import javax.persistence.*;

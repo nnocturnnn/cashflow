@@ -1,4 +1,4 @@
-package com.example.sweater.service;
+package world.ucode.cashflow.service;
 
 import world.ucode.cashflow.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

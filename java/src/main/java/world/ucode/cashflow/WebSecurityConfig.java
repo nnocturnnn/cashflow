@@ -25,8 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-        @Autowired
-        private UserService userService;
 		http
 			.authorizeRequests()
 				.antMatchers("/css/**","/","/register").permitAll()

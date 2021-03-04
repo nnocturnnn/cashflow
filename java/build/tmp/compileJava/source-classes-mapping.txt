@@ -1,0 +1,24 @@
+world/ucode/cashflow/MvcConfig.java
+ world.ucode.cashflow.MvcConfig
+world/ucode/cashflow/CashflowApplication.java
+ world.ucode.cashflow.CashflowApplication
+world/ucode/cashflow/LoginController.java
+ world.ucode.cashflow.LoginController
+world/ucode/cashflow/StartController.java
+ world.ucode.cashflow.StartController
+world/ucode/cashflow/db/User.java
+ world.ucode.cashflow.db.User
+world/ucode/cashflow/repos/TransactionRepo.java
+ world.ucode.cashflow.repos.TransactionRepo
+world/ucode/cashflow/WebSecurityConfig.java
+ world.ucode.cashflow.WebSecurityConfig
+world/ucode/cashflow/db/Role.java
+ world.ucode.cashflow.db.Role
+world/ucode/cashflow/MainController.java
+ world.ucode.cashflow.MainController
+world/ucode/cashflow/repos/UserRepo.java
+ world.ucode.cashflow.repos.UserRepo
+world/ucode/cashflow/service/UserService.java
+ world.ucode.cashflow.service.UserService
+world/ucode/cashflow/db/Transaction.java
+ world.ucode.cashflow.db.Transaction
