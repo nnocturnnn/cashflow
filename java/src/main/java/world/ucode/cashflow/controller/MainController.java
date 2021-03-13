@@ -20,6 +20,7 @@ public class MainController {
 
 	@GetMapping("/home")
 	public String index(Model model) {
+        model.addAttribute("user","nnoc");
 		return "records";
 	}
 
