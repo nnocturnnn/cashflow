@@ -19,8 +19,8 @@ public class MainController {
     private TransactionRepo transactionRepo;
 
 	@GetMapping("/home")
-	public String index(Model model) {
-        model.addAttribute("user","nnoc");
+	public String index(Model model,User user) {
+        model.addAttribute("user",user.getUsername());
 		return "records";
 	}
 
@@ -28,8 +28,8 @@ public class MainController {
 	public String recordAdd(@AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag, Map<String, Object> model) {
-        Transaction transaction = new Transaction(text, tag, user);
-        transactionRepo.save(transaction);
+        // Transaction transaction = new Transaction(text, tag, user);
+        // transactionRepo.save(transaction);
 		return "records";
 	}
 
