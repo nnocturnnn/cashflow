@@ -11,6 +11,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "usr")
 public class User implements UserDetails {
     @Id
