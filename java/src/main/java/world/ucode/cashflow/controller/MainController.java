@@ -19,8 +19,8 @@ public class MainController {
     private TransactionRepo transactionRepo;
 
 	@GetMapping("/home")
-	public String index(Model model,User user) {
-        model.addAttribute("user",user.getUsername());
+	public String index(@AuthenticationPrincipal User user,Model model) {
+        model.addAttribute("user",user);
 		return "records";
 	}
 

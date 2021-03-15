@@ -6,12 +6,20 @@
     
 <div class="container">
     <form method="post">
-        <div class="form-group mb-3">
-            <div>
-            <label for="type">Type</label>
-            <select name="type" id="type" class="form-control">
-                <option value="">Select Type of Financial Records</option>
-            </select>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="">Select Type of Financial Records</option>
+                </select>
+            </div>
+            <div class="col">
+            <div class="form-group">
+                <label for="amount">Currency</label>
+                <input id="amount" name="amount" type="text" class="form-control">
+            </div>
+            </div>
         </div>
         <div class="row mb-3">
             <div class="col">

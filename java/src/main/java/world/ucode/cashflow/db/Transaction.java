@@ -12,7 +12,10 @@ public class Transaction {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String text;
-    private String tag;
+    private Category category;
+    private Currency currency;
+    private Wallet wallet;
+    private Tag tag;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
