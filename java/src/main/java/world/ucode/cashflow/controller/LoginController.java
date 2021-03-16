@@ -2,7 +2,7 @@ package world.ucode.cashflow.controller;
 
 import world.ucode.cashflow.db.Role;
 import world.ucode.cashflow.db.User;
-import world.ucode.cashflow.repos.UserRepo;
+import world.ucode.cashflow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Controller
 public class LoginController {
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
 
 	@GetMapping("/login")
 	public String login(Model model) {
@@ -35,13 +35,23 @@ public class LoginController {
 
     @PostMapping("/register")
     public String postRegister(User user, Map<String, Object> model) {
-        User userFromDb = userRepo.findByUsername(user.getUsername());
-        System.out.println(user.getUsername());
-        
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userRepo.save(user);
+        if (!userService.addUser(user)) {
+            return "";
+        }
 		return "redirect:login";
 	}
+
+    @GetMapping("/activate/{code}")
+    public String activate(Model model, @PathVariable String code) {
+        boolean isActivated = userService.activateUser(code);
+
+        if (isActivated) {
+            model.addAttribute("message", "User successfully activated");
+        } else {
+            model.addAttribute("message", "Activation code is not found!");
+        }
+
+        return "login";
+    }
 
 }
