@@ -69,6 +69,14 @@
     position: fixed;
 }
 
+#sOut {
+    margin-top: 5px;
+}
+
+#tag {
+    margin-left: 10px;
+}
+
 button {
     font-family: 'Rubik', sans-serif;
     font-size: small;
@@ -89,14 +97,16 @@ button:hover {
     min-height: 95%;
 }
 footer {
-    position: absolute;
+    margin-top: 1px;
+    padding-left: 15%;
+    padding-top: 8px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
     height: 40px;
-    padding: 8px 0;
-    background: black;
+    /* padding: 8px 0; */
+    background: #1F1F1F;
 }
 .footflexbox {
     display: flex;

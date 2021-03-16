@@ -1,2 +1,0 @@
-world/ucode/cashflow/CashflowApplicationTests.java
- world.ucode.cashflow.CashflowApplicationTests

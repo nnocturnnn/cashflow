@@ -22,7 +22,7 @@ public class User implements UserDetails {
     private boolean active;
 
     private String email;
-    private String activateCode;
+    private String activationCode;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -52,5 +52,9 @@ public class User implements UserDetails {
      @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
+    }
+
+    public void saveActivationCode(String ActivationCode) {
+        this.activationCode = ActivationCode;
     }
 }
