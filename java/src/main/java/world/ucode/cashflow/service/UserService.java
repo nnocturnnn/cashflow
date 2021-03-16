@@ -1,8 +1,8 @@
-package com.example.sweater.service;
+package world.ucode.cashflow.service;
 
-import com.example.sweater.domain.Role;
-import com.example.sweater.domain.User;
-import com.example.sweater.repos.UserRepo;
+import world.ucode.cashflow.db.Role;
+import world.ucode.cashflow.db.User;
+import world.ucode.cashflow.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
