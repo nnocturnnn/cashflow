@@ -6,6 +6,9 @@ import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 public class Transaction {
     @Id
@@ -20,13 +23,4 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
-
-    public Transaction() {
-    }
-
-    public Transaction(String text, String tag, User user) {
-        this.author = user;
-        this.text = text;
-        this.tag = tag;
-    }
 }

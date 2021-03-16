@@ -46,11 +46,11 @@ public class LoginController {
     public String activate(Model model, @PathVariable String code) {
         boolean isActivated = userService.activateUser(code);
 
-        if (isActivated) {
-            model.addAttribute("message", "User successfully activated");
-        } else {
-            model.addAttribute("message", "Activation code is not found!");
-        }
+        // if (isActivated) {
+        //     model.addAttribute("message", "User successfully activated");
+        // } else {
+        //     model.addAttribute("message", "Activation code is not found!");
+        // }
 
         return "login";
     }
