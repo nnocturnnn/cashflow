@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 world/ucode/cashflow/service/MailSender.java
  world.ucode.cashflow.service.MailSender
+=======
+>>>>>>> bc0270d27bcc249d77f4e4bd5e3dc5af25d3808d
 world/ucode/cashflow/CashflowApplication.java
  world.ucode.cashflow.CashflowApplication
+world/ucode/cashflow/service/MailSender.java
+ world.ucode.cashflow.service.MailSender
 world/ucode/cashflow/db/User.java
  world.ucode.cashflow.db.User
 world/ucode/cashflow/controller/StartController.java
