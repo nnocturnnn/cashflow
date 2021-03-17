@@ -5,19 +5,19 @@
 </div>
     
 <div class="container">
-    <form method="post" action="#" >
+    <form method="post" th:action="@{/home}" th:object="${transaction}" >
         <div class="row mb-3">
             <div class="col">
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <select id="type" class="form-control">
-                        <option value="">Select Type of Financial Records</option>
+                    <select th:field="${type}" id="type" class="form-control">
+                        <option th:each="type : ${allType}" th:value="${type}" th:text="${type}" value="">Select Type of Financial Records</option>
                 </select>
             </div>
             <div class="col">
             <div class="form-group">
                 <label for="amount">Currency</label>
-                <input id="amount" type="text" class="form-control">
+                <input th:field="*{currency}" id="amount"  type="text" class="form-control">
             </div>
             </div>
         </div>
@@ -31,18 +31,17 @@
             <div class="col">
             <div class="form-group">
                 <label for="amount">Tag</label>
-                <input id="tag" name="amount" type="text" class="form-control">
+                <input id="tag" th:field="*{tag}" type="text" class="form-control">
             </div>
             </div>
-        </div>
         </div>
         <!-- Select Category -->
         <div class="row mb-3">
             <div class="col">
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select name="category" id="category" class="form-control">
-                        <option value="">Select Type of Category</option>
+                    <select th:field="*{category}" id="category" class="form-control">
+                        <option th:each="category : ${allCategory}" th:value="${category}" th:text="${category}" value="">Select Type of Category</option>
                     </select>
                 </div>
             </div>
@@ -72,19 +71,17 @@
             <div class="col">
                 <div class="form-group">
                     <label for="amount">Amount</label>
-                    <input id="amount" name="amount" type="number" min="0" class="form-control">
+                    <input id="amount" th:field="*{text}" type="number" min="0" class="form-control">
                 </div>
             </div>
         </div>
         <!-- Datetimepicker -->
         <div class="row mb-3">
             <div class="col-6">
-                <!-- Date Picker Input -->
                 <label for="date">Select Date</label>
                 <input id="date" type="date" name="date" class="form-control">
             </div>
             <div class="col-6">
-                <!-- Date Time Input -->
                 <label for="time">Select Time</label>
                 <input id="time" type="time" name="time" class="form-control">
             </div>

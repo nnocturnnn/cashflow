@@ -23,7 +23,9 @@ public class MainController {
 
 	@GetMapping("/home")
 	public String index(@AuthenticationPrincipal User user,Model model) {
+        Transaction transaction = new Transaction();
         model.addAttribute("user",user.getUsername());
+        model.addAttribute("transaction",transaction);
 		return "records";
 	}
 
@@ -47,9 +49,10 @@ public class MainController {
 	// }
 
     @PostMapping("/home")
-    public String transactionPost(Model model,@ModelAttribute Transaction transaction) {
+    public String transactionPost(Map<String, Object> model) {
+        Transaction transaction = new Transaction();
         // Iterable<Transaction> transactions = transactionRepo.findAll();
-        model.addAttribute("transaction", transaction);
+        model.put("transaction", transaction);
         // transaction.setType("food");
         // System.out.println(transaction.getType());
         // System.out.println(transaction.getText());
