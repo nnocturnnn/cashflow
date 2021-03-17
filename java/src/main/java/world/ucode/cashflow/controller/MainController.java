@@ -7,6 +7,7 @@ import world.ucode.cashflow.repos.TransactionRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletResponse;
@@ -26,25 +27,33 @@ public class MainController {
 		return "records";
 	}
 
-    @PostMapping("/home")
-	public String recordAdd(@AuthenticationPrincipal User user,
-            @RequestParam String text,
-            @RequestParam String tag, Map<String, Object> model) {
-        // Transaction transaction = new Transaction(text, tag, user);
-        // transactionRepo.save(transaction);
-		return "records";
-	}
+    // @PostMapping("/home")
+	// public String recordAdd(@AuthenticationPrincipal User user,
+    //         @RequestParam String text,
+    //         @RequestParam String tag, Map<String, Object> model) {
+    //     // Transaction transaction = new Transaction(text, tag, user);
+    //     // transactionRepo.save(transaction);
+	// 	return "records";
+	// }
 
     @GetMapping("/transaction")
 	public String transaction(Model model) {
 		return "transaction";
-	}
+    }
+    
+    // @GetMapping("/records")
+	// public String recordGet(Model model) {
+	// 	return "records";
+	// }
 
-    @PostMapping("/transaction")
-    public String transactionPost(Map<String, Object> model) {
-        Iterable<Transaction> transactions = transactionRepo.findAll();
-
-        model.put("messages", transactions);
+    @PostMapping("/home")
+    public String transactionPost(Model model,@ModelAttribute Transaction transaction) {
+        // Iterable<Transaction> transactions = transactionRepo.findAll();
+        model.addAttribute("transaction", transaction);
+        // transaction.setType("food");
+        // System.out.println(transaction.getType());
+        // System.out.println(transaction.getText());
+        // model.put("messages", );
 		return "transaction";
     }
     

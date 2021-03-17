@@ -5,19 +5,19 @@
 </div>
     
 <div class="container">
-    <form method="post">
+    <form method="post" action="#" >
         <div class="row mb-3">
             <div class="col">
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <select name="type" id="type" class="form-control">
+                    <select id="type" class="form-control">
                         <option value="">Select Type of Financial Records</option>
                 </select>
             </div>
             <div class="col">
             <div class="form-group">
                 <label for="amount">Currency</label>
-                <input id="amount" name="amount" type="text" class="form-control">
+                <input id="amount" type="text" class="form-control">
             </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="amount">Wallet</label>
-                    <input id="wallet" name="amount" type="text" class="form-control">
+                    <input id="wallet" th:field="*{wallet}" type="text" class="form-control">
                 </div>
             </div>
             <div class="col">

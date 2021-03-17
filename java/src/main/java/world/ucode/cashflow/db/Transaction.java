@@ -13,12 +13,13 @@ import lombok.*;
 public class Transaction {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
-    private String text;
-    // private Category category;
-    // private Currency currency;
-    // private Wallet wallet;
-    private String tag;
+    private Integer id = 1;
+    private String text = "df";
+    private String type = "df";
+    private String category = "df";
+    private String currency = "df";
+    private String wallet = "df";
+    private String tag = "df";
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
