@@ -48,14 +48,10 @@ public class MainController {
 	// }
 
     @PostMapping("/home")
-    public String transactionPost(Map<String, Object> model) {
+    public String transactionPost(@AuthenticationPrincipal User user,Map<String, Object> model) {
         Transaction transaction = new Transaction();
-        // Iterable<Transaction> transactions = transactionRepo.findAll();
+        Iterable<Transaction> transactions = transactionRepo.findAll();
         model.put("transaction", transaction);
-        // transaction.setType("food");
-        // System.out.println(transaction.getType());
-        // System.out.println(transaction.getText());
-        // model.put("messages", );
 		return "transaction";
     }
     
@@ -64,6 +60,8 @@ public class MainController {
         Iterable<Transaction> transactions = transactionRepo.findAll();
         Mono mono = new Mono();
         String data = mono.sendGet();
+        ArrayList<String> listdata = new ArrayList<String>(); 
+        JSONArray jArray = (JSONArray)jsonObject;
         model.put("user",user.getUsername());
         model.put("data",data);
 		return "monobank";

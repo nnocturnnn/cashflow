@@ -16,13 +16,13 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id = 1;
-    private String text = "df";
-    private String type = "df";
+    private String text;
+    private String type;
     private String category;
     private String subcategory;
-    private String currency = "df";
-    private String wallet = "df";
-    private String tag = "df";
+    private String currency;
+    private String wallet;
+    private String tag;
     
     @DateTimeFormat(pattern = "dd.MM.yyyy")
     private Date date;
