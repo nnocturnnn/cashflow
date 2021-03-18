@@ -1,14 +1,14 @@
-// package world.ucode.cashflow.db;
+package world.ucode.cashflow.db;
 
-// import javax.persistence.*;
-// import lombok.*;
+import javax.persistence.*;
+import lombok.*;
 
-// @Getter
-// @Setter
+@Getter
+@Setter
 // @Entity
-// @NoArgsConstructor
+@NoArgsConstructor
 // @Table(name = "wallet")
-// public class Category {
-//     private String name;
-//     private String subcategory;
-// }
+public class Category {
+    private String name;
+    private String subcategory;
+}

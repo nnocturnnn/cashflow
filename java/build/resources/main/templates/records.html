@@ -5,15 +5,15 @@
 </div>
     
 <div class="container">
-    <form method="post" th:action="@{/home}" th:object="${transaction}" >
+    <form method="post" th:action="@{/records}" th:object="${transaction}" >
         <div class="row mb-3">
-            <!-- <div class="col">
+            <div class="col">
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <select th:field="${type}" id="type" class="form-control">
+                    <select th:field="*{type}" id="type" class="form-control">
                         <option th:each="type : ${allType}" th:value="${type}" th:text="${type}" value="">Select Type of Financial Records</option>
                 </select>
-            </div> -->
+            </div>
             <div class="col">
             <div class="form-group">
                 <label for="amount">Currency</label>
@@ -45,29 +45,15 @@
                     </select>
                 </div>
             </div>
-            <!-- <div class="col">
+            <div class="col">
                 <label for="sub_category">Sub-Category</label>
-                <select name="sub_category" id="sub_category" class="form-control sub_category selectFilter">
-                    <option value="">Select Type Sub-Category</option>
+                <select th:field="*{subcategory}" name="sub_category" id="sub_category" class="form-control sub_category selectFilter">
+                    <option th:each="subcategory : ${allCategory}" th:value="${subcategory}" th:text="${subcategory}" value="">Select Type Sub-Category</option>
                 </select>
-            </div> -->
+            </div>
         </div>
         <!-- Payment Type and Amount-->
         <div class="row mb-3">
-            <!-- <div class="col">
-                <div class="form-group">
-                    <label for="payment">Payment Type</label>
-                    <select name="payment" id="payment" class="form-control">
-                        <option value="-1">Select Type of Payment</option>
-                        <option>Bank Transfer</option>
-                        <option>Cash</option>
-                        <option>Credit Card</option>
-                        <option>Debit Card</option>
-                        <option>Mobile Payment</option>
-                        <option>Voucher</option>
-                    </select>
-                </div>
-            </div> -->
             <div class="col">
                 <div class="form-group">
                     <label for="amount">Amount</label>
@@ -76,16 +62,16 @@
             </div>
         </div>
         <!-- Datetimepicker -->
-        <!-- <div class="row mb-3">
+        <div class="row mb-3">
             <div class="col-6">
                 <label for="date">Select Date</label>
-                <input id="date" type="date" name="date" class="form-control">
+                <input th:field="*{date}" id="date" type="date" name="date" class="form-control">
             </div>
             <div class="col-6">
                 <label for="time">Select Time</label>
-                <input id="time" type="time" name="time" class="form-control">
+                <input th:field="*{time}" id="time" type="time" name="time" class="form-control">
             </div>
-        </div> -->
+        </div>
         <hr>
         <!-- Button -->
         <div class="d-grid gap-2">
