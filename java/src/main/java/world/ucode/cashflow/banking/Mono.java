@@ -11,6 +11,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.time.Instant;
 
 public class Mono {
 
@@ -28,14 +29,13 @@ public class Mono {
     }
 
     public String sendGet() throws Exception{
-
+        long unixTimestamp = Instant.now().getEpochSecond() - 2419200;
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("https://api.monobank.ua/personal/client-info"))
+                .uri(URI.create("https://api.monobank.ua/personal/statement/mjFVwB_e7hQDlUv2hrsL3A/" + Long.toString(unixTimestamp)))
                 .setHeader("X-Token", "u9z0t-MyklvB8QOuNxjWaf9wAPe93Uy_eQEAEsFYrZdM")
                 .build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        
         return response.body();
 
     }
