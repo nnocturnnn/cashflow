@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 import java.util.List;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class MainController {
@@ -58,13 +60,37 @@ public class MainController {
     
     @GetMapping("/monobank")
     public String Mono(Map<String, Object> model,@AuthenticationPrincipal User user) throws Exception {
-        Iterable<Transaction> transactions = transactionRepo.findAll();
         Mono mono = new Mono();
         List<MonoTransaction> data = mono.sendGet();
-        System.out.println(data.get(1));
-        System.out.println("jopa");
+        int count = 0;
+        String balance = "";
+        for(MonoTransaction i : data) {
+            if (count == 0) {
+                balance = i.getBalance();
+            }
+            Date currentTime = new Date(Integer.parseInt(i.getTime()));
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateString = formatter.format(currentTime);
+            i.setBalance(Double.toString(Double.parseDouble(i.getBalance()) / 100));
+            i.setAmount(Double.toString(Double.parseDouble(i.getAmount()) / 100));
+            i.setTime(dateString);
+            if (i.getCurrencyCode() == "980") {
+                i.setCurrencyCode("UAN");
+            } else if (i.getCurrencyCode() == "978") {
+                i.setCurrencyCode("EUR");
+            } else if (i.getCurrencyCode() == "840") {
+                i.setCurrencyCode("USD");
+            }
+            if (Integer.parseInt(i.getOperationAmount()) > 0){
+                i.setOperationAmount("Income");
+            } else {
+                i.setOperationAmount("Expense");
+            } 
+            count++;
+        }
+        model.put("balance",balance);
+        model.put("monos",data);
         model.put("user",user.getUsername());
-        model.put("data",data);
 		return "monobank";
 	}
 

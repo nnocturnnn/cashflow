@@ -1,7 +1,21 @@
 <div th:insert="base"></div>
 
 <div class="container">
-    <p th:utext="${data}"></p>
+    <p th:utext="${balance}"></p>
+    <tr>
+        <td>Type</td>
+        <td>Time</td>
+        <td>Currency</td>
+        <td>Category</td>
+        <td>Amount</td>
+    </tr>
+    <tr th:each="mono : ${monos}">
+        <td th:text="${mono.operationAmount}"></td>
+        <td th:text="${mono.time}"></td>
+        <td th:text="${mono.currencyCode}"></td>
+        <td th:text="${mono.description}"></td>
+        <td th:text="${mono.amount}"></td>
+    </tr>
 </div>
 
 <div th:insert="base_2"></div>

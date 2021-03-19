@@ -23,4 +23,5 @@ public class MonoTransaction {
     private String receiptId;
     private String counterEdrpou;
     private String counterIban;
+
 }   
