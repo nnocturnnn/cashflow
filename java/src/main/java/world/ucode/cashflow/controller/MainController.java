@@ -32,23 +32,21 @@ public class MainController {
     }
 
     @PostMapping("/records")
-    public String recordPost(@AuthenticationPrincipal User user,Map<String, Object> model) {
-        Transaction transaction = new Transaction();
+    public String recordPost(@AuthenticationPrincipal User user,Model model, @ModelAttribute Transaction transaction) {
         Iterable<Transaction> transactions = transactionRepo.findAll();
-        model.put("transaction", transaction);
-		return "transaction";
+        model.put("transaction", transactions);
+		return "redirect:transaction";
     }
     
     @GetMapping("/home")
-
-    @PostMapping("/home")
-	public String recordAdd(@AuthenticationPrincipal User user,
-            @RequestParam String text,
-            @RequestParam String tag, Map<String, Object> model) {
-        // Transaction transaction = new Transaction(text, tag, user);
-        // transactionRepo.save(transaction);
-		return "records";
-	}
+    public String homeGet(@AuthenticationPrincipal User user,Model model) {
+        model.addAttribute("user",user.getUsername());
+        return "dashboard";
+    }
+    // @PostMapping("/home")
+	// public String homePost(@AuthenticationPrincipal User user,Model model) {
+	// 	return "records";
+	// }
 
     @GetMapping("/transaction")
 	public String transaction(Model model) {
