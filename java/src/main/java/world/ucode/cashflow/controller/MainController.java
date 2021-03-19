@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
+import java.util.List;
 import java.io.IOException;
 
 @Controller
@@ -59,9 +60,9 @@ public class MainController {
     public String Mono(Map<String, Object> model,@AuthenticationPrincipal User user) throws Exception {
         Iterable<Transaction> transactions = transactionRepo.findAll();
         Mono mono = new Mono();
-        String data = mono.sendGet();
-        ArrayList<String> listdata = new ArrayList<String>(); 
-        JSONArray jArray = (JSONArray)jsonObject;
+        List<MonoTransaction> data = mono.sendGet();
+        System.out.println(data.get(1));
+        System.out.println("jopa");
         model.put("user",user.getUsername());
         model.put("data",data);
 		return "monobank";
