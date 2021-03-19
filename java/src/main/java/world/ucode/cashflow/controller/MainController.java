@@ -24,39 +24,38 @@ public class MainController {
     @Autowired
     private TransactionRepo transactionRepo;
 
-	@GetMapping("/home")
-	public String index(@AuthenticationPrincipal User user,Model model, @ModelAttribute Transaction transaction) {
+	@GetMapping("/records")
+	public String recordGet(@AuthenticationPrincipal User user,Model model, @ModelAttribute Transaction transaction) {
         model.addAttribute("user",user.getUsername());
         model.addAttribute("transaction",transaction);
 		return "records";
-	}
+    }
 
-    // @PostMapping("/home")
-	// public String recordAdd(@AuthenticationPrincipal User user,
-    //         @RequestParam String text,
-    //         @RequestParam String tag, Map<String, Object> model) {
-    //     // Transaction transaction = new Transaction(text, tag, user);
-    //     // transactionRepo.save(transaction);
-	// 	return "records";
-	// }
+    @PostMapping("/records")
+    public String recordPost(@AuthenticationPrincipal User user,Map<String, Object> model) {
+        Transaction transaction = new Transaction();
+        Iterable<Transaction> transactions = transactionRepo.findAll();
+        model.put("transaction", transaction);
+		return "transaction";
+    }
+    
+    @GetMapping("/home")
+
+    @PostMapping("/home")
+	public String recordAdd(@AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag, Map<String, Object> model) {
+        // Transaction transaction = new Transaction(text, tag, user);
+        // transactionRepo.save(transaction);
+		return "records";
+	}
 
     @GetMapping("/transaction")
 	public String transaction(Model model) {
 		return "transaction";
     }
     
-    // @GetMapping("/records")
-	// public String recordGet(Model model) {
-	// 	return "records";
-	// }
 
-    @PostMapping("/home")
-    public String transactionPost(@AuthenticationPrincipal User user,Map<String, Object> model) {
-        Transaction transaction = new Transaction();
-        Iterable<Transaction> transactions = transactionRepo.findAll();
-        model.put("transaction", transaction);
-		return "transaction";
-    }
     
     @GetMapping("/monobank")
     public String Mono(Map<String, Object> model,@AuthenticationPrincipal User user) throws Exception {
