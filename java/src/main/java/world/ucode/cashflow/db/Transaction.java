@@ -24,7 +24,7 @@ public class Transaction {
     private String wallet;
     private String tag;
     
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @DateTimeFormat(pattern = "HH:mm")
     private Date time;

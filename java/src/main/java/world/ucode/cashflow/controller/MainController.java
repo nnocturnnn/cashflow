@@ -32,9 +32,8 @@ public class MainController {
     }
 
     @PostMapping("/records")
-    public String recordPost(@AuthenticationPrincipal User user,Model model, @ModelAttribute Transaction transaction) {
-        Iterable<Transaction> transactions = transactionRepo.findAll();
-        model.put("transaction", transactions);
+    public String recordPost(@AuthenticationPrincipal User user,Map<String, Object> model, @ModelAttribute Transaction transaction) {
+        transactionRepo.save(transaction);
 		return "redirect:transaction";
     }
     
@@ -49,7 +48,10 @@ public class MainController {
 	// }
 
     @GetMapping("/transaction")
-	public String transaction(Model model) {
+	public String transaction(@AuthenticationPrincipal User user,Map<String, Object> model) {
+        Iterable<Transaction> transactions = transactionRepo.findAll();
+        model.put("user",user.getUsername());
+        model.put("transactions",transactions);
 		return "transaction";
     }
     
@@ -89,6 +91,19 @@ public class MainController {
         model.put("monos",data);
         model.put("user",user.getUsername());
 		return "monobank";
-	}
+    }
+    
+    @GetMapping("/privatbank")
+    public String getPriv(@AuthenticationPrincipal User user,Model model) {
+        model.addAttribute("user",user.getUsername());
+        return "privatbank";
+    }
+
+
+    @GetMapping("/profile")
+    public String getProfile(@AuthenticationPrincipal User user,Model model) {
+        model.addAttribute("user",user.getUsername());
+        return "profile";
+    }
 
 }

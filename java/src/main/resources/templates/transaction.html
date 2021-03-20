@@ -1,5 +1,7 @@
 <div th:insert="base"></div>
 <div><h1>Result</h1>
-    <p th:text="'id: ' + ${greeting.type}" />
-    <p th:text="'content: ' + ${greeting.text}" />
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.id}"></td>
+        <td th:text="${transaction.text}"></td>
+    </tr>
 <div th:insert="base_2"></div>
