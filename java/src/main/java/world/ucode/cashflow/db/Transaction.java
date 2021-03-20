@@ -16,7 +16,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id = 1;
-    private String text;
+    private int text;
     private String type;
     private String category;
     private String subcategory;

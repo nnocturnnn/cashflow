@@ -33,6 +33,7 @@ public class MainController {
 
     @PostMapping("/records")
     public String recordPost(@AuthenticationPrincipal User user,Map<String, Object> model, @ModelAttribute Transaction transaction) {
+        transaction.setAuthor(user);
         transactionRepo.save(transaction);
 		return "redirect:transaction";
     }
@@ -49,7 +50,7 @@ public class MainController {
 
     @GetMapping("/transaction")
 	public String transaction(@AuthenticationPrincipal User user,Map<String, Object> model) {
-        Iterable<Transaction> transactions = transactionRepo.findAll();
+        Iterable<Transaction> transactions = transactionRepo.findByAuthor(user.getUsername());
         model.put("user",user.getUsername());
         model.put("transactions",transactions);
 		return "transaction";
