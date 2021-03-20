@@ -20,7 +20,7 @@ lombok {
 
 dependencies {
 	implementation 'org.json:json:20171018'
-    compile('org.springframework.boot:spring-boot-starter-mail')
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.2.0.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
