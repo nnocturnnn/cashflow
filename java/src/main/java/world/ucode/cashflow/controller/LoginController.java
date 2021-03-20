@@ -37,7 +37,7 @@ public class LoginController {
     @PostMapping("/register")
     public String postRegister(User user, Map<String, Object> model) {
         if (!userService.addUser(user)) {
-            return "";
+            return "redirect:start";
         }
 		return "redirect:login";
 	}
