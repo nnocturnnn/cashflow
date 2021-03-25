@@ -1,7 +1,25 @@
 <div th:insert="base"></div>
 <div><h1>Result</h1>
+    <tr>
+        <td>id</td>
+        <td>type</td>
+        <td>text</td>
+        <td>category</td>
+        <td>subcategory</td>
+        <td>currency</td>
+        <td>wallet</td>
+        <td>tag</td>
+        <br>
+    </tr>
     <tr th:each="transaction : ${transactions}">
         <td th:text="${transaction.id}"></td>
+        <td th:text="${transaction.type}"></td>
         <td th:text="${transaction.text}"></td>
+        <td th:text="${transaction.category}"></td>
+        <td th:text="${transaction.subcategory}"></td>
+        <td th:text="${transaction.currency}"></td>
+        <td th:text="${transaction.wallet}"></td>
+        <td th:text="${transaction.tag}"></td>
+        <br>
     </tr>
 <div th:insert="base_2"></div>

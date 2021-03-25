@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.time.Instant;
 
 @Controller
 public class MainController {
@@ -40,6 +42,38 @@ public class MainController {
     
     @GetMapping("/home")
     public String homeGet(@AuthenticationPrincipal User user,Model model) {
+        Iterable<Transaction> transactions = transactionRepo.findAll();
+        // Map<String, Integer> income_m = new LinkedHashMap<>();
+        // Map<String, Integer> exp_m = new LinkedHashMap<>();
+        HashMap<String,Integer> hm = new HashMap<>();
+        HashMap<String,Integer> e_hm = new HashMap<>();
+        int income = 0;
+        int exp = 0;
+        for(Transaction tr : transactions) {
+            String name = tr.getCategory();
+            // int price = tr.getText();
+            // String name = i.getShop();
+            int price = hm.containsKey(name) ? hm.get(name) : 0;
+            price += tr.getText();
+            hm.put(name, price);
+            // if (price < 0) {
+            //     price *= -1;
+            //     e_hm.put(category, hm.getOrDefault(category, 0) + price);
+            // }
+            // else {
+            //     hm.put(category, e_hm.getOrDefault(category, 0) + price);
+            // }
+            if (tr.getText() > 0 && tr.getType().equals("Income")) {
+                income += tr.getText();
+            }
+            else {
+                exp += tr.getText() * -1;
+            }
+        }
+        exp *= -1;
+        model.addAttribute("surveyMap", hm);
+        model.addAttribute("pass", income);
+		model.addAttribute("fail", exp);
         model.addAttribute("user",user.getUsername());
         return "dashboard";
     }
@@ -50,7 +84,7 @@ public class MainController {
 
     @GetMapping("/transaction")
 	public String transaction(@AuthenticationPrincipal User user,Map<String, Object> model) {
-        Iterable<Transaction> transactions = transactionRepo.findByAuthor(user.getUsername());
+        Iterable<Transaction> transactions = transactionRepo.findAll();
         model.put("user",user.getUsername());
         model.put("transactions",transactions);
 		return "transaction";
@@ -68,17 +102,17 @@ public class MainController {
             if (count == 0) {
                 balance = i.getBalance();
             }
-            Date currentTime = new Date(Integer.parseInt(i.getTime()));
+            Date currentTime = new Date(Long.parseLong(i.getTime()) * 1000);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dateString = formatter.format(currentTime);
             i.setBalance(Double.toString(Double.parseDouble(i.getBalance()) / 100));
             i.setAmount(Double.toString(Double.parseDouble(i.getAmount()) / 100));
             i.setTime(dateString);
-            if (i.getCurrencyCode() == "980") {
+            if (i.getCurrencyCode().equals("980")) {
                 i.setCurrencyCode("UAN");
-            } else if (i.getCurrencyCode() == "978") {
+            } else if (i.getCurrencyCode().equals("978")) {
                 i.setCurrencyCode("EUR");
-            } else if (i.getCurrencyCode() == "840") {
+            } else if (i.getCurrencyCode().equals("840")) {
                 i.setCurrencyCode("USD");
             }
             if (Integer.parseInt(i.getOperationAmount()) > 0){

@@ -10,3 +10,4 @@ public interface TransactionRepo extends CrudRepository<Transaction, Long> {
     List<Transaction> findByTag(String tag);
 
 }
+

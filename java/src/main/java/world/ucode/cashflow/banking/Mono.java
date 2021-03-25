@@ -22,12 +22,10 @@ public class Mono {
     public static void main(String[] args) throws Exception {
 
         Mono obj = new Mono();
-
-        System.out.println("Testing 1 - Send Http GET request");
         obj.sendGet();
 
     }
-
+    
     public List<MonoTransaction> sendGet() throws Exception{
         long unixTimestamp = Instant.now().getEpochSecond() - 2419200;
         HttpRequest request = HttpRequest.newBuilder()
