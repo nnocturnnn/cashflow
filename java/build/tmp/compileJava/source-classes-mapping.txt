@@ -6,8 +6,8 @@ world/ucode/cashflow/db/User.java
  world.ucode.cashflow.db.User
 world/ucode/cashflow/controller/StartController.java
  world.ucode.cashflow.controller.StartController
-world/ucode/cashflow/config/MailConfig.java
- world.ucode.cashflow.config.MailConfig
+world/ucode/cashflow/repos/TransactionRepo.java
+ world.ucode.cashflow.repos.TransactionRepo
 world/ucode/cashflow/db/Role.java
  world.ucode.cashflow.db.Role
 world/ucode/cashflow/repos/UserRepo.java
@@ -22,14 +22,14 @@ world/ucode/cashflow/banking/MonoTransaction.java
  world.ucode.cashflow.banking.MonoTransaction
 world/ucode/cashflow/db/Category.java
  world.ucode.cashflow.db.Category
-world/ucode/cashflow/db/Transaction.java
- world.ucode.cashflow.db.Transaction
+world/ucode/cashflow/controller/MainController.java
+ world.ucode.cashflow.controller.MainController
 world/ucode/cashflow/banking/Mono.java
  world.ucode.cashflow.banking.Mono
  world.ucode.cashflow.banking.Mono$1
 world/ucode/cashflow/controller/LoginController.java
  world.ucode.cashflow.controller.LoginController
-world/ucode/cashflow/controller/MainController.java
- world.ucode.cashflow.controller.MainController
-world/ucode/cashflow/repos/TransactionRepo.java
- world.ucode.cashflow.repos.TransactionRepo
+world/ucode/cashflow/config/MailConfig.java
+ world.ucode.cashflow.config.MailConfig
+world/ucode/cashflow/db/Transaction.java
+ world.ucode.cashflow.db.Transaction
