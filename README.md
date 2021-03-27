@@ -1,4 +1,7 @@
 # Cashflow
+## Description:
+Ucode project: develop the app for financial accounting
+
 ## Django
 
 ### How To Setup
@@ -12,10 +15,29 @@
 8. Create Super User `python manage.py createsuperuser`
 9. Finally Run The Project `python manage.py runserver`
 
-![](screen/main.png)
-![](screen/no-acc.png)
-![](screen/photo-page.png)
-![](screen/profile.png)
-![](screen/red-page.png)
+## Java 
+### Implementation:
+Front-End - HTML/CSS/JavaScript/Bootstrap
+Back-End - Java 14, Gradle, SQL
+Technologies:
+Spring Framework, Spring Boot, Spring Security
+PostgreSQL
 
-## Java%
+### How To Setup
+1. Clone This Project `git clone`
+2. Go to Project Directory `cd cashflow && cd java`
+3. You have to install PostgreSQL `brew install postgresql`
+4. Create user and databases: `psql postgres; CREATE USER root WITH PASSWORD 'qwerty'; CREATE DATABASE [your login]; CREATE DATABASE cashflow; exit;`
+5. apply maven wrapper, if necessary: `mvn -N io.takari:maven:wrapper`
+6. Run App: `./gradlew bootRun`
+7. open in browser website: `http://localhost:8080/cashflow`
+
+
+View:
+
+![](screen/main.png)
+![](screen/1.png)
+![](screen/2.png)
+![](screen/3.png)
+![](screen/4.png)
+![](screen/5.png)
